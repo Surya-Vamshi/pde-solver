@@ -1,9 +1,8 @@
-#include<iostream>
-#include<vector>
-
+#include"steady_state_jacobi.h"
 // Print Vector And Matrix Funtion just to check the values
 template <typename V>
 void print_vector(const V& v){
+    std::cout.precision(7);
     for(auto &elem: v){
         std::cout<< elem<< ' ';
     }
@@ -15,6 +14,7 @@ void print_matrix(const M& a){
         print_vector(elem);
     }
 }
+
 
 int main(){
     double l{1}, b{1}; // Length and Breath of the 2d Element
@@ -54,8 +54,10 @@ int main(){
     Temp[nx-1][0]= (900+400)/2.0;
     Temp[nx-1][ny-1]= (900+800)/2.0;
 
+    double k = 2*(1/(dx*dx)+1/(dy*dy)); // Constant
+    std::vector<std::vector<double>> ss_jacobi_solution= steady_state_jacobi(nx,ny,x,y,dx,dy,Temp,tol,k);
     
-    print_matrix(Temp);
+    print_matrix(ss_jacobi_solution);
 
     return 0;
 }
