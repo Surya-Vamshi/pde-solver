@@ -2,8 +2,8 @@
 #include<iostream>
 #include<cmath>
 #include<iomanip>
-std::vector<std::vector<double>> steady_state_jacobi(const int& nx,const int& ny,const std::vector<double>& x,const std::vector<double>& y,const double& dx,
-                                                        const double& dy,std::vector<std::vector<double>> Temp,const double& tol,const double& k)
+void steady_state_jacobi(std::vector<std::vector<double>> Temp, const int& nx,const int& ny,
+                            const double& dx,const double& dy,const double& tol,const double& k)
 {
     std::vector<std::vector<double>> Temp_new = Temp;
     int iter{1};
@@ -32,5 +32,4 @@ std::vector<std::vector<double>> steady_state_jacobi(const int& nx,const int& ny
         iter++;
     }
     std::cout<<"Number of iterations took to converge for Steady State Jacobian: "<< iter<< std::endl;
-    return Temp_new;
 }
