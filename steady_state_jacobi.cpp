@@ -2,7 +2,7 @@
 #include<iostream>
 #include<cmath>
 #include<iomanip>
-void steady_state_jacobi(std::vector<std::vector<double>> Temp, const int& nx,const int& ny,
+void steady_state_jacobi(std::vector<std::vector<double>>& Temp, const int& nx,const int& ny,
                             const double& dx,const double& dy,const double& tol,const double& k)
 {
     std::vector<std::vector<double>> Temp_new = Temp;

@@ -4,7 +4,7 @@
 #include<iostream>
 #include<cmath>
 #include<iomanip>
-void steady_state_jacobi(std::vector<std::vector<double>>, const int&,const int&,
+void steady_state_jacobi(std::vector<std::vector<double>>&, const int&,const int&,
                             const double&,const double& ,const double&,const double&);
 
 #endif
