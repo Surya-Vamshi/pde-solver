@@ -1,7 +1,4 @@
-#include<vector>
-#include<iostream>
-#include<cmath>
-#include<iomanip>
+#include"steady_state_gauss_seidel.h"
 void steady_state_gauss_seidel(std::vector<std::vector<double>>& Temp, const int& nx,const int& ny,
                                  const double& dx, const double& dy,const double& tol,const double& k)
 {

@@ -37,7 +37,7 @@ int main(){
         steady_state_jacobi(Temp,nx,ny,dx,dy,tol,k);
         print_matrix(Temp);
     }else if(method == "gs"){
-                steady_state_gauss_seidel(Temp,nx,ny,dx,dy,tol,k);
+                // steady_state_gauss_seidel(Temp,nx,ny,dx,dy,tol,k);
                 print_matrix(Temp);
     }else{
         std::cout<<"Error";

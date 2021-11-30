@@ -1,7 +1,5 @@
-#include<vector>
-#include<iostream>
-#include<cmath>
-#include<iomanip>
+#include"temp_initialization.h"
+
 void temp_initialization(std::vector<std::vector<double>>& Temp, const int& nx,const int& ny,
                          const double& dx, const double& dy)
 {
