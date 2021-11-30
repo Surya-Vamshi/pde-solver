@@ -1,6 +1,7 @@
 #include"temp_initialization.h"
 #include"steady_state_jacobi.h"
 #include"steady_state_gauss_seidel.h"
+#include"steady_state_successive_over_relaxation.h"
 #include<string>
 // Print Vector And Matrix Funtion just to check the values
 template <typename V>
@@ -30,7 +31,8 @@ int main(){
     temp_initialization(Temp,nx,ny,dx,dy);
     double k = 2*(1/(dx*dx)+1/(dy*dy)); // Constant
     std::string method = "None";
-    std::cout<<"Jacobian Method (jac); Gauss Seidel (gs)"<<std::endl;
+    std::cout<<"Steady State Methods:";
+    std::cout<<"Jacobian Method (jac); Gauss Seidel (gs); Successive Over Relaxation(sor);"<<std::endl;
     std::cout<<"Select an iterative method: ";
     std::cin>>method;
     if(method == "jac"){
@@ -39,9 +41,11 @@ int main(){
     }else if(method == "gs"){
                 // steady_state_gauss_seidel(Temp,nx,ny,dx,dy,tol,k);
                 print_matrix(Temp);
+    }else if(method == "sor"){
+                steady_state_successive_over_relaxation(Temp,nx,ny,dx,dy,tol,k);
+                print_matrix(Temp);
     }else{
         std::cout<<"Error";
     }
-
     return 0;
 }
