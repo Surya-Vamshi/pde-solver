@@ -1,5 +1,5 @@
-#ifndef STEADY_STATE_GAUSS_SEIDEL_H
-#define STEADY_STATE_GAUSS_SEIDEL_H
+#ifndef TEMP_INITIALIZATION_H
+#define TEMP_INITIALIZATION_H
 #include<vector>
 #include<iostream>
 #include<cmath>

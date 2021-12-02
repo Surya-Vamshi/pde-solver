@@ -1,4 +1,4 @@
-#include"steady_state_successive_over_relaxation.h"
+#include "steady_state_successive_over_relaxation.h"
 
 void steady_state_successive_over_relaxation(std::vector<std::vector<double>>& Temp, const int& nx,const int& ny,
                             const double& dx,const double& dy,const double& tol,const double& k)

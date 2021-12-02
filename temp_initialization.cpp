@@ -3,13 +3,27 @@
 void temp_initialization(std::vector<std::vector<double>>& Temp, const int& nx,const int& ny,
                          const double& dx, const double& dy)
 {
+    double Temp_init{300};
+    char option{'n'};
+    std::cout<<"Do you want to give initial temperatures for entire domain? (y)(n): ";
+    std::cin>>option;
+    if(option=='y'){
+            std::cout<<"Enter the Temperature:";
+            std::cin>>Temp_init;
+    }
     for(auto i = 0; i<nx ;i++){
         for (auto j = 0; j<ny ; j++){
-            Temp[i].push_back(300);
+            Temp[i].push_back(Temp_init);
         }
     }
     // Assigning Temperatures at Boundaries 
     double Temp_left{400}, Temp_right{800}, Temp_top{600}, Temp_bottom{900};
+    std::cout<<"Do you want to give temperatures for the boundaries? (y)(n): ";
+    std::cin>>option;
+    if(option=='y'){
+            std::cout<<"Enter the Temperatures in order (Left, Right, Top, Bottom):";
+            std::cin>>Temp_left>>Temp_right>>Temp_top>>Temp_bottom;
+    }
     for (auto i = 0; i<nx ; i++){
             Temp[i][0]= Temp_left; // Left Boundary
     }
