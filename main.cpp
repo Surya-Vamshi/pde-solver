@@ -24,6 +24,17 @@ int main(){
     double l{1}, b{1}; // Length and Breath of the 2d Element
     int nx{10}, ny{10}; // Number of nodes in x and y direction
     double tol{0.0001}; // Tolerance Limit
+    char option{'n'};
+    std::cout<<"Do you want to enter dimensions of the domain, mesh size and Tolerance? (y)(n): ";
+    std::cin>>option;
+    if(option=='y'){
+            std::cout<<"Enter the Lenght and Breath:";
+            std::cin>>l>>b;
+            std::cout<<"Enter the number of nodes desired along Lenght and Breath:";
+            std::cin>>nx>>ny;
+            std::cout<<"Enter the Tolerance:";
+            std::cin>>tol;
+    }
     double dx = l/(nx-1); 
     double dy = b/(ny-1); 
     // Assigining Temperature 
