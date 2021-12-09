@@ -44,7 +44,6 @@ Gauss Seidel (gs);
 Successive Over Relaxation(sor);
 - Finally, after solving the PDE's the code will print the temperatures at each node.
 
-#### Unit Test????
 
 ## Sprint 2
 
