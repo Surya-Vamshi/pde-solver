@@ -25,21 +25,26 @@ int main(){
     int nx{10}, ny{10}; // Number of nodes in x and y direction
     double tol{0.0001}; // Tolerance Limit
     char option{'n'};
-    std::cout<<"Do you want to enter dimensions of the domain, mesh size and Tolerance? (y)(n): ";
+    std::cout<<"Default Values:"<<std::endl;
+    std::cout<<"Lenght = 1m; Breath = 1m;"<<std::endl;
+    std::cout<<"Number of nodes in x direction = 10 ; Number of nodes in y direction = 10;"<<std::endl;
+    std::cout<<"Tolerance limit = 0.0001"<<std::endl;
+    
+    std::cout<<"Do you want to enter your own dimensions of the domain, mesh size and Tolerance? (y)(n): ";
     std::cin>>option;
     if(option=='y'){
             std::cout<<"Enter the Lenght and Breath:";
             std::cin>>l>>b;
             std::cout<<"Enter the number of nodes desired along Lenght and Breath:";
-            std::cin>>nx>>ny;
+            std::cin>>ny>>nx;
             std::cout<<"Enter the Tolerance:";
             std::cin>>tol;
     }
     double dx = l/(nx-1); 
     double dy = b/(ny-1); 
     // Assigining Temperature 
-    std::vector<std::vector<double>> Temp(nx);
-    temp_initialization(Temp,nx,ny,dx,dy);
+    std::vector<std::vector<double>> Temperature(nx);
+    temp_initialization(Temperature,nx,ny,dx,dy);
     double k = 2*(1/(dx*dx)+1/(dy*dy)); // Constant
     std::string method = "None";
     std::cout<<"Steady State Methods:";
@@ -47,16 +52,16 @@ int main(){
     std::cout<<"Select an iterative method: ";
     std::cin>>method;
     if(method == "jac"){
-        steady_state_jacobi(Temp,nx,ny,dx,dy,tol,k);
-        print_matrix(Temp);
+        steady_state_jacobi(Temperature,nx,ny,dx,dy,tol,k);
+        print_matrix(Temperature);
     }else if(method == "gs"){
-                steady_state_gauss_seidel(Temp,nx,ny,dx,dy,tol,k);
-                print_matrix(Temp);
+                steady_state_gauss_seidel(Temperature,nx,ny,dx,dy,tol,k);
+                print_matrix(Temperature);
     }else if(method == "sor"){
-                steady_state_successive_over_relaxation(Temp,nx,ny,dx,dy,tol,k);
-                print_matrix(Temp);
+                steady_state_successive_over_relaxation(Temperature,nx,ny,dx,dy,tol,k);
+                print_matrix(Temperature);
     }else{
-        std::cout<<"Error";
+        std::cerr<<"Error: Method is not choosen from the available list!"<<std::endl;
     }
     return 0;
 }

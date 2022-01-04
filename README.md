@@ -21,6 +21,30 @@ There will be some unit tests written to allow more efficient code editing later
 - The project outputs the steady-state values of each node in a result file. (This is intentionally vague on output format to allow different implentations of node-identification, coordinate systems, etc.)
 - The project contains at least one unit test which compares one simple case with a coresponding analytical solution.
 
+#### Problem Definition
+
+- 2D Heat Conduction:
+In this code, a rectangular (2D) domain is considered.
+For this domain, initial temperatures are given at each node. Then the temperature at the boundaries are defined. 
+With the given temperature and using a choosen iterative scheme, the code will solve the partitial differential equations and give the temperature at each node for steady state condition.
+
+#### How to use the code
+
+- Dimensions of the domain, Mesh size and Tolerance: If desired these values can be given by the user by answering the yes or no question. 
+Default Values are: Lenght and Breath = 1 (m); Number of nodes along lenght and breath = 10; Tolerance = 0.0001;
+- Temperature Values: If desired initial temperatures and boundary temperatures can be given by the user by answering the yes or no questions. 
+Default Values are: Initial Temperature at each node = 300K; 
+Temperature at Left Boundary = 400K;
+Temperature at Right Boundary = 800K;
+Temperature at Top Boundary = 600K;
+Temperature at Bottom Boundary = 900K;
+- Selection of Iterative method: User has 3 options to choose from, 
+Jacobian Method (jac); 
+Gauss Seidel (gs); 
+Successive Over Relaxation(sor);
+- Finally, after solving the PDE's the code will print the temperatures at each node.
+
+
 ## Sprint 2
 
 In this sprint, you will be implementing the core functionality of the program through logical use of classes. 

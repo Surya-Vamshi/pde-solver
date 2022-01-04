@@ -1,9 +1,9 @@
 #include "steady_state_gauss_seidel.h"
 
-void steady_state_gauss_seidel(std::vector<std::vector<double>>& Temp, const int& nx,const int& ny,
+void steady_state_gauss_seidel(std::vector<std::vector<double>>& Temperature, const int& nx,const int& ny,
                                  const double& dx, const double& dy,const double& tol,const double& k)
 {
-    std::vector<std::vector<double>> Temp_new = Temp;
+    std::vector<std::vector<double>> Solution = Temperature;
     int iter{1};
     double err{1};
 
@@ -13,7 +13,7 @@ void steady_state_gauss_seidel(std::vector<std::vector<double>>& Temp, const int
         {
             for (size_t j = 1; j < ny-1; j++)
             {
-                Temp_new[i][j] = (Temp_new[i-1][j]+Temp[i+1][j])/(k*dx*dx)+(Temp_new[i][j-1]+Temp[i][j+1])/(k*dy*dy);
+                Solution[i][j] = (Solution[i-1][j]+Temperature[i+1][j])/(k*dx*dx)+(Solution[i][j-1]+Temperature[i][j+1])/(k*dy*dy);
             }
         }
         err = 0;
@@ -21,12 +21,12 @@ void steady_state_gauss_seidel(std::vector<std::vector<double>>& Temp, const int
         {
             for (size_t j = 1; j < ny-1; j++)
             {
-                if(err<fabs(Temp_new[i][j]-Temp[i][j])){
-                    err = fabs(Temp_new[i][j]-Temp[i][j]);
+                if(err<fabs(Solution[i][j]-Temperature[i][j])){
+                    err = fabs(Solution[i][j]-Temperature[i][j]);
                 }
             }
         }
-        Temp = Temp_new;
+        Temperature = Solution;
         iter++;
     }
     std::cout<<"Number of iterations took to converge for Steady State Gauss Seidel: "<< iter<< std::endl;

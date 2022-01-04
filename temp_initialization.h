@@ -4,6 +4,7 @@
 #include<iostream>
 #include<cmath>
 #include<iomanip>
-void temp_initialization(std::vector<std::vector<double>>&,const int&,const int&, const double&,const double&);
+void temp_initialization(std::vector<std::vector<double>>& Temperature, const int& nx,const int& ny,
+                         const double& dx, const double& dy);
 
 #endif
