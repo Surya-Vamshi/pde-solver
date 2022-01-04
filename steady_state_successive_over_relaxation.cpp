@@ -6,7 +6,7 @@ void steady_state_successive_over_relaxation(std::vector<std::vector<double>>& T
     double rf = 1.1; // Over Relaxation Factor
     std::vector<std::vector<double>> Temp_new = Temp;
     int iter{1};
-    double err{1};
+    double err{1.0};
     double term1{0.0}, term2{0.0};
 
     while (err>tol)
