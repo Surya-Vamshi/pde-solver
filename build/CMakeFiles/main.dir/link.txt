@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/steady_state.cpp.o CMakeFiles/main.dir/heat_conduction_2d.cpp.o  -o main 
