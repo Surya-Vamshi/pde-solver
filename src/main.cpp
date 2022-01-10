@@ -1,3 +1,8 @@
+#include<iostream>
+#include<vector>
+#include<cmath>
+#include<iomanip>
+#include<string>
 #include"mesh.h"
 #include"steady_state.h"
 #include"heat_conduction_2d.h"

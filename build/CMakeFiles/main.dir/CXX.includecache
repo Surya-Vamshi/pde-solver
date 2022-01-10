@@ -6,33 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/surya/Documents/advanced_programming/bonus_project_al/src/heat_conduction_2d.cpp
-heat_conduction_2d.h
-/home/surya/Documents/advanced_programming/bonus_project_al/src/heat_conduction_2d.h
-
-/home/surya/Documents/advanced_programming/bonus_project_al/src/heat_conduction_2d.h
-vector
--
-iostream
--
-cmath
--
-iomanip
--
-string
--
+/home/surya/Documents/advanced_programming/bonus_project_al/src/mesh.cpp
 mesh.h
 /home/surya/Documents/advanced_programming/bonus_project_al/src/mesh.h
-steady_state.h
-/home/surya/Documents/advanced_programming/bonus_project_al/src/steady_state.h
-
-/home/surya/Documents/advanced_programming/bonus_project_al/src/main.cpp
-mesh.h
-/home/surya/Documents/advanced_programming/bonus_project_al/src/mesh.h
-steady_state.h
-/home/surya/Documents/advanced_programming/bonus_project_al/src/steady_state.h
-heat_conduction_2d.h
-/home/surya/Documents/advanced_programming/bonus_project_al/src/heat_conduction_2d.h
 
 /home/surya/Documents/advanced_programming/bonus_project_al/src/mesh.h
 iostream
@@ -45,22 +21,4 @@ iomanip
 -
 string
 -
-
-/home/surya/Documents/advanced_programming/bonus_project_al/src/steady_state.cpp
-steady_state.h
-/home/surya/Documents/advanced_programming/bonus_project_al/src/steady_state.h
-
-/home/surya/Documents/advanced_programming/bonus_project_al/src/steady_state.h
-vector
--
-iostream
--
-cmath
--
-iomanip
--
-string
--
-mesh.h
-/home/surya/Documents/advanced_programming/bonus_project_al/src/mesh.h
 
