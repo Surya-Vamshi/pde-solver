@@ -9,8 +9,10 @@
 
 
 int main(){
+    std::cout.setf(std::ios::fixed, std::ios::floatfield);
+
     heat_conduction_2d example;
-    example.setup_initialization();
+    
     example.temp_initialization();
     example.steady_state_solver();
     example.result();

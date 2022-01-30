@@ -11,10 +11,12 @@ class steady_state: public mesh
 {
     protected:
         std::vector<std::vector<double>> Solution;
-        void jacobi();
-        void gauss_seidel();
-        void successive_over_relaxation();
+        
+        void jacobi(int max_iter);
+        void gauss_seidel(int max_iter);
+        void successive_over_relaxation(int max_iter);
     public:
+      
 
 };
 

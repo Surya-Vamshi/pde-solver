@@ -1,17 +1,19 @@
 #include"mesh.h"
 
-mesh::mesh(): l(1),b(1),nx(10),ny(10),tol(0.0001),dx(1/9),dy(1/9),k(0.04)
+mesh::mesh()
 {
     std::cout<<"Default Values:"<<std::endl;
     std::cout<<"Lenght = 1m; Breath = 1m;"<<std::endl;
     std::cout<<"Number of nodes in x direction = 10 ; Number of nodes in y direction = 10;"<<std::endl;
     std::cout<<"Tolerance limit = 0.0001"<<std::endl<<std::endl;
-}
+    
+    
 
-void mesh::setup_initialization(){
     char option{'n'};
     std::cout<<"Do you want to enter your own dimensions of the domain, mesh size and Tolerance? (y)(n): ";
+    label4:
     std::cin>>option;
+    
     if(option=='y'){
             std::cout<<"Enter the Lenght and Breath:";
             std::cin>>l>>b;
@@ -19,6 +21,9 @@ void mesh::setup_initialization(){
             std::cin>>ny>>nx;
             std::cout<<"Enter the Tolerance:";
             std::cin>>tol;
+    } else if (option!='n'){
+            std::cerr<<"Error: (y)(n)!"<<std::endl;
+            goto label4;
     }
     dx = l/(nx-1); 
     dy = b/(ny-1);
@@ -32,10 +37,15 @@ void mesh::temp_initialization(){
     double Temperature_init{300.00};
     char option{'n'};
     std::cout<<"Do you want to give initial temperatures for entire domain? (y)(n): ";
+    label2:
     std::cin>>option;
+    
     if(option=='y'){
             std::cout<<"Enter the Temperature:";
             std::cin>>Temperature_init;
+    } else if (option!='n'){
+            std::cerr<<"Error: (y)(n)!"<<std::endl;
+            goto label2;
     }
     std::vector<double> i(ny);
     std::fill(i.begin(), i.end(), Temperature_init);
@@ -43,10 +53,15 @@ void mesh::temp_initialization(){
     // Assigning Temperatures at Boundaries 
     double Temperature_left{400}, Temperature_right{800}, Temperature_top{600}, Temperature_bottom{900};
     std::cout<<"Do you want to give temperatures for the boundaries? (y)(n): ";
+    label3:
     std::cin>>option; 
+   
     if(option=='y'){
             std::cout<<"Enter the Temperatures in order (Left, Right, Top, Bottom):";
             std::cin>>Temperature_left>>Temperature_right>>Temperature_top>>Temperature_bottom;
+    }else if (option!='n'){
+            std::cerr<<"Error: (y)(n)!"<<std::endl;
+            goto label3;
     }
       
     for (auto i = 0; i<nx ; i++){
@@ -68,12 +83,17 @@ void mesh::temp_initialization(){
     Temperature[nx-1][ny-1]= (Temperature_bottom+Temperature_right)/2.0;
     // Printing initialized Temperatures.
     std::cout<<std::endl<<"Initializated Temperatures:"<<std::endl;
-    for(auto elem: Temperature){
-        std::cout.precision(7);
-        for(auto x: elem){
-                std::cout<< x<< ' ';
-        }
-        std::cout<<"\n";
-    }
+    mesh::print(Temperature);
+
     std::cout<<"Initialization Done"<<std::endl<<std::endl;  
+}
+
+void mesh::print(std::vector<std::vector<double>> temp){
+        for(auto elem: temp){
+                std::cout.precision(2);
+                for(auto x: elem){
+                        std::cout<< x<< ' ';
+                }
+         std::cout<<"\n";
+         }
 }

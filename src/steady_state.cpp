@@ -1,14 +1,15 @@
 #include"steady_state.h"
 
-void steady_state::jacobi()
+void steady_state::jacobi(int max_iter)
 {
+    
     std::vector<std::vector<double>> Temp = Temperature;
     Solution = Temperature;
     
     int iter{1};
     double err{1};
 
-    while (err>tol)
+    while (err>tol || iter<max_iter)
     {
         for (size_t i = 1; i < nx-1; i++)
         {
@@ -33,7 +34,7 @@ void steady_state::jacobi()
     std::cout<<"Number of iterations took to converge for Steady State Jacobian: "<< iter<< std::endl;
 }
 
-void steady_state::gauss_seidel()
+void steady_state::gauss_seidel(int max_iter)
 {
     std::vector<std::vector<double>> Temp = Temperature;
     Solution = Temperature;
@@ -41,7 +42,7 @@ void steady_state::gauss_seidel()
     int iter{1};
     double err{1};
 
-    while (err>tol)
+    while (err>tol || iter<max_iter)
     {
         for (size_t i = 1; i < nx-1; i++)
         {
@@ -66,7 +67,7 @@ void steady_state::gauss_seidel()
     std::cout<<"Number of iterations took to converge for Steady State Gauss Seidel: "<< iter<< std::endl;
 }
 
-void steady_state::successive_over_relaxation()
+void steady_state::successive_over_relaxation(int max_iter)
 {
     double relaxation_factor = 1.1; // Over Relaxation Factor
     std::vector<std::vector<double>> Temp = Temperature;
@@ -75,7 +76,7 @@ void steady_state::successive_over_relaxation()
     double err{1.0};
     double term1{0.0}, term2{0.0};
 
-    while (err>tol)
+    while (err>tol || iter<max_iter)
     {
         for (size_t i = 1; i < nx-1; i++)
         {
