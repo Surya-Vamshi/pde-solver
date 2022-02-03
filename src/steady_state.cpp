@@ -8,6 +8,7 @@ void steady_state::jacobi(int max_iter)
     
     int iter{0};
     double err{1};
+    double constant=k*dx*dx;
 
     while (err>tol && iter<max_iter)
     {
@@ -15,7 +16,7 @@ void steady_state::jacobi(int max_iter)
         {
             for (size_t j = 1; j < ny-1; j++)
             {
-                Solution[i][j] = (Temp[i-1][j]+Temp[i+1][j])/(k*dx*dx)+(Temp[i][j-1]+Temp[i][j+1])/(k*dy*dy);
+                Solution[i][j] = (Temp[i-1][j]+Temp[i+1][j])/constant+(Temp[i][j-1]+Temp[i][j+1])/constant;
             }
         }
         err = 0;
@@ -42,14 +43,14 @@ void steady_state::gauss_seidel(int max_iter)
 
     int iter{0};
     double err{1};
-
+    double constant=k*dx*dx;
     while (err>tol && iter<max_iter)
     {
         for (size_t i = 1; i < nx-1; i++)
         {
             for (size_t j = 1; j < ny-1; j++)
             {
-                Solution[i][j] = (Solution[i-1][j]+Temp[i+1][j])/(k*dx*dx)+(Solution[i][j-1]+Temp[i][j+1])/(k*dy*dy);
+                Solution[i][j] = (Solution[i-1][j]+Temp[i+1][j])/constant+(Solution[i][j-1]+Temp[i][j+1])/constant;
             }
         }
         err = 0;
@@ -77,6 +78,7 @@ void steady_state::successive_over_relaxation(int max_iter)
     int iter{0};
     double err{1.0};
     double term1{0.0}, term2{0.0};
+    double constant=k*dx*dx;
 
     while (err>tol && iter<max_iter)
     {
@@ -84,8 +86,8 @@ void steady_state::successive_over_relaxation(int max_iter)
         {
             for (size_t j = 1; j < ny-1; j++)
             {
-                term1 = (Solution[i-1][j]+Temp[i+1][j])/(k*dx*dx);
-                term2 = (Solution[i][j-1]+Temp[i][j+1])/(k*dy*dy);
+                term1 = (Solution[i-1][j]+Temp[i+1][j])/constant;
+                term2 = (Solution[i][j-1]+Temp[i][j+1])/constant;
                 // These two terms are actually Gauss-Seidel Solution.
                 Solution[i][j] = Temp[i][j]*(1-relaxation_factor) + relaxation_factor*(term1 + term2);
                 // This extrapolation takes the form of a weighted average between the previous iterate 
