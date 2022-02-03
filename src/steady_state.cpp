@@ -6,10 +6,10 @@ void steady_state::jacobi(int max_iter)
     std::vector<std::vector<double>> Temp = Temperature;
     Solution = Temperature;
     
-    int iter{1};
+    int iter{0};
     double err{1};
 
-    while (err>tol || iter<max_iter)
+    while (err>tol && iter<max_iter)
     {
         for (size_t i = 1; i < nx-1; i++)
         {
@@ -23,8 +23,9 @@ void steady_state::jacobi(int max_iter)
         {
             for (size_t j = 1; j < ny-1; j++)
             {
-                if(err<fabs(Solution[i][j]-Temp[i][j])){
-                    err = fabs(Solution[i][j]-Temp[i][j]);
+                double err_1= fabs(Solution[i][j]-Temp[i][j]);
+                if(err< err_1){
+                    err = err_1;
                 }
             }
         }
@@ -39,10 +40,10 @@ void steady_state::gauss_seidel(int max_iter)
     std::vector<std::vector<double>> Temp = Temperature;
     Solution = Temperature;
 
-    int iter{1};
+    int iter{0};
     double err{1};
 
-    while (err>tol || iter<max_iter)
+    while (err>tol && iter<max_iter)
     {
         for (size_t i = 1; i < nx-1; i++)
         {
@@ -56,8 +57,9 @@ void steady_state::gauss_seidel(int max_iter)
         {
             for (size_t j = 1; j < ny-1; j++)
             {
-                if(err<fabs(Solution[i][j]-Temp[i][j])){
-                    err = fabs(Solution[i][j]-Temp[i][j]);
+                double err_1= fabs(Solution[i][j]-Temp[i][j]);
+                if(err< err_1){
+                    err = err_1;
                 }
             }
         }
@@ -72,11 +74,11 @@ void steady_state::successive_over_relaxation(int max_iter)
     double relaxation_factor = 1.1; // Over Relaxation Factor
     std::vector<std::vector<double>> Temp = Temperature;
     Solution = Temperature;
-    int iter{1};
+    int iter{0};
     double err{1.0};
     double term1{0.0}, term2{0.0};
 
-    while (err>tol || iter<max_iter)
+    while (err>tol && iter<max_iter)
     {
         for (size_t i = 1; i < nx-1; i++)
         {
@@ -95,8 +97,9 @@ void steady_state::successive_over_relaxation(int max_iter)
         {
             for (size_t j = 1; j < ny-1; j++)
             {
-                if(err<fabs(Solution[i][j]-Temp[i][j])){
-                    err = fabs(Solution[i][j]-Temp[i][j]);
+                double err_1= fabs(Solution[i][j]-Temp[i][j]);
+                if(err< err_1){
+                    err = err_1;
                 }
             }
         }
