@@ -1,4 +1,4 @@
-gprof was used to find time of unoptimized code.\n
+gprof was used to find time of unoptimized code.
 It was found that the most time was spent in the steady state solver which is to be expected.
 100x100 grid with 5000 iteration and 0.0001 was run for this test.
 Hence efforsts were put to make this part faster
