@@ -10,7 +10,7 @@
 class steady_state: public mesh
 {
     protected:
-        std::vector<std::vector<double>> Solution;
+        
         
         void jacobi(int max_iter);
         void gauss_seidel(int max_iter);
