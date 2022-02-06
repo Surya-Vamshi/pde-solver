@@ -38,5 +38,5 @@ void heat_conduction_2d::steady_state_solver()
 void heat_conduction_2d::result()
 {
     std::cout<<std::endl<<"Solution of the 2D Heat Conduction:"<<std::endl;
-    mesh::print(Solution);
+    mesh::print(Temperature);
 }
